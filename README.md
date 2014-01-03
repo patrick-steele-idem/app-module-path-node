@@ -23,7 +23,7 @@ Given the following example directory structure:
 
 The additional application module paths should be added before any modules are loaded (i.e. at the very beginning of your main script) using code similar to the following:
 
-_Example `index.js`_
+_Example `index.js`:_
 ```javascript
 var path = require('path');
 
@@ -37,7 +37,7 @@ var baz = require('baz'); // Works
 
 In addition, application level modules can be required from any other application level modules using a top-level module path. For example:
 
-_Example `src/foo/index.js`_
+_Example `src/foo/index.js`:_
 ```javascript
 var bar = require('bar'); // Works
 var baz = require('baz'); // Works
@@ -45,7 +45,7 @@ var baz = require('baz'); // Works
 
 Lastly, by design, installed modules (i.e. modules installed into `node_modules`) will not be able to require application-level modules so the following will _not_ work:
 
-_Example `node_modules/baz/index.js`_
+_Example `node_modules/baz/index.js`:_
 ```javascript
 var bar = require('foo'); // Will *not* work!
 var baz = require('bar'); // Will *not* work!

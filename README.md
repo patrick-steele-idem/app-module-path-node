@@ -43,7 +43,7 @@ var bar = require('bar'); // Works
 var baz = require('baz'); // Works
 ```
 
-Lastly, installed modules (i.e. modules installed into `node_modules` will not be able to require application-level modules so the following will _not_ work:
+Lastly, by design, installed modules (i.e. modules installed into `node_modules`) will not be able to require application-level modules so the following will _not_ work:
 
 _Example `node_modules/baz/index.js`_
 ```javascript

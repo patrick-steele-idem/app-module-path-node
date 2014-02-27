@@ -1,6 +1,6 @@
 {
   "name": "app-module-path",
-  "version": "0.2.0-SNAPSHOT",
+  "version": "0.3.0-beta",
   "description": "Simple module to add additional directories to the Node module search for top-level app modules",
   "main": "lib/index.js",
   "scripts": {

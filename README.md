@@ -8,6 +8,25 @@ This simple module enables you to add additional directories to the Node.js modu
 `npm install app-module-path --save`
 
 ## Usage
+```javascript
+var path = require('path');
+
+// ***IMPORTANT**: The following line should be added to the very
+//                 beginning of your main script!
+require('app-module-path').addPath(baseDir);
+```
+
+__IMPORTANT:__
+The search path should be modified before any modules are loaded!
+
+__Example:__
+
+In your `index.js` (or `server.js`) file:
+```javascript
+// Add the "src" directory to the app module search path:
+var path = require('path');
+require('app-module-path').addPath(path.join(__dirname, 'src'));
+```
 
 Given the following example directory structure:
 
@@ -21,34 +40,20 @@ Given the following example directory structure:
         - index.js
 - index.js - Main script
 
-The additional application module paths should be added before any modules are loaded (i.e. at the very beginning of your main script) using code similar to the following:
-
-_Example `index.js`:_
+The following will work for any modules under the `src` directory:
 ```javascript
-var path = require('path');
-
-// Add the "src" directory to the app module search path:
-require('app-module-path').addPath(path.join(__dirname, 'src'));
-
+// All of the following lines will work in "src/foo/index.js" and "src/bar/index.js":
 var foo = require('foo'); // Works
 var bar = require('bar'); // Works
 var baz = require('baz'); // Works
 ```
 
-In addition, application level modules can be required from any other application level modules using a top-level module path. For example:
+Lastly, by design, installed modules (i.e. modules under the `node_modules` directory) will not be able to require application-level modules so the following will _not_ work:
 
-_Example `src/foo/index.js`:_
 ```javascript
-var bar = require('bar'); // Works
-var baz = require('baz'); // Works
-```
-
-Lastly, by design, installed modules (i.e. modules installed into `node_modules`) will not be able to require application-level modules so the following will _not_ work:
-
-_Example `node_modules/baz/index.js`:_
-```javascript
-var bar = require('foo'); // Will *not* work!
-var baz = require('bar'); // Will *not* work!
+// All of the following lines will work *not* work in "node_modules/baz/index.js"!
+var bar = require('foo'); // Fails
+var baz = require('bar'); // Fails
 ```
 
 ## Contribute

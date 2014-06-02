@@ -21,40 +21,52 @@ The search path should be modified before any modules are loaded!
 
 __Example:__
 
-In your `index.js` (or `server.js`) file:
+In your `my-app/index.js` (or `my-app/server.js`) file:
 ```javascript
 // Add the "src" directory to the app module search path:
 var path = require('path');
-require('app-module-path').addPath(path.join(__dirname, 'src'));
+require('app-module-path').addPath(path.join(__dirname));
 ```
 
 Given the following example directory structure:
 
-- **src/** - Source code and application modules directory
-    - **foo/** - A module directory
-        - index.js 
-    - **bar/** - Another module directory
-        - index.js
-- **node_modules/** - Installed modules
-    - **baz/** - An installed module
-        - index.js
-- index.js - Main script
+- **my-app/**
+    - **src/** - Source code and application modules directory
+        - **foo/** - A module directory
+            - index.js 
+        - **bar/** - Another module directory
+            - index.js
+    - **node_modules/** - Installed modules
+        - **installed-baz/** - An installed module
+            - index.js
+    - index.js - Main script
 
 The following will work for any modules under the `src` directory:
 ```javascript
 // All of the following lines will work in "src/foo/index.js" and "src/bar/index.js":
-var foo = require('foo'); // Works
-var bar = require('bar'); // Works
-var baz = require('baz'); // Works
+var foo = require('src/foo'); // Works
+var bar = require('src/bar'); // Works
+var baz = require('installed-baz'); // Works
 ```
 
-Lastly, by design, installed modules (i.e. modules under the `node_modules` directory) will not be able to require application-level modules so the following will _not_ work:
+Lastly, by design, installed modules (i.e. modules under the `node_modules` directory) will not be able to require application-level modules so the following will ___not___ work:
 
 ```javascript
-// All of the following lines will work *not* work in "node_modules/baz/index.js"!
-var foo = require('foo'); // Fails
-var bar = require('bar'); // Fails
+// All of the following lines will work *not* work in "node_modules/installed-baz/index.js"!
+var foo = require('src/foo'); // Fails
+var bar = require('src/bar'); // Fails
 ```
+
+## Additional Notes
+
+* __Search path order:__
+    * App module paths will be added to the beginning of the default module search path. That is, if a module with the same name exists in both a `node_modules` directory and an appliation module directory then the module in the appliation module directory will be loaded since it is found first.
+* __Node.js compatibility:__
+    * This module depends on overriding/wrapping a built-in Node.js method, and it is possible (but unlikely) that this behavior could be broken in a future release of Node.js (at which point a workaround would need to be used)
+    * This module will _not_ change or break modules installed into the `node_modules` directory.
+* __Recommendations:__
+    * Since this module changes the Node.js convention of how non-relative modules are resolved, it is recommended (but not required) to put all app modules in a common directory below the application root (such as `my-app/src` or `my-app/app_modules`) and then to add the application root to the search path. The require calls would then be something like `require('src/foo')` or `require('app_modules/foo')`. The common prefix makes it more clear that the module can be found in the application's modules directory and not in the `node_modules` directory.
+
 
 ## Contribute
 Pull requests, bug reports and feature requests welcome.

@@ -9,8 +9,6 @@ This simple module enables you to add additional directories to the Node.js modu
 
 ## Usage
 ```javascript
-var path = require('path');
-
 // ***IMPORTANT**: The following line should be added to the very
 //                 beginning of your main script!
 require('app-module-path').addPath(baseDir);

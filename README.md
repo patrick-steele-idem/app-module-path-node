@@ -52,8 +52,8 @@ Lastly, by design, installed modules (i.e. modules under the `node_modules` dire
 
 ```javascript
 // All of the following lines will work *not* work in "node_modules/baz/index.js"!
-var bar = require('foo'); // Fails
-var baz = require('bar'); // Fails
+var foo = require('foo'); // Fails
+var bar = require('bar'); // Fails
 ```
 
 ## Contribute

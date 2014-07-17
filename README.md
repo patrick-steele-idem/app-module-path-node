@@ -1,7 +1,7 @@
 app-module-path
 =====================
 
-This simple module enables you to add additional directories to the Node.js module search for top-level app modules only. This allows application-level modules to be required as if they were installed into the `node_modules` directory.
+This simple module enables you to add additional directories to the Node.js module search path (for top-level app modules only). This allows application-level modules to be required as if they were installed into the `node_modules` directory.
 
 ## Installation
 

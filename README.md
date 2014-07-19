@@ -21,9 +21,8 @@ __Example:__
 
 In your `my-app/index.js` (or `my-app/server.js`) file:
 ```javascript
-// Add the "src" directory to the app module search path:
-var path = require('path');
-require('app-module-path').addPath(path.join(__dirname));
+// Add the root project directory to the app module search path:
+require('app-module-path').addPath(__dirname);
 ```
 
 Given the following example directory structure:

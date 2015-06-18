@@ -12,6 +12,8 @@ This simple module enables you to add additional directories to the Node.js modu
 // ***IMPORTANT**: The following line should be added to the very
 //                 beginning of your main script!
 require('app-module-path').addPath(baseDir);
+// If you're adding a path in a common module for test setup set the second parameter to true to ensure the module calling yours can look in the new path
+require('app-module-path').addPath(baseDir, true);
 ```
 
 __IMPORTANT:__

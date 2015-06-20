@@ -1,6 +1,6 @@
 var path = require('path');
 
-require('../').addPath(path.join(__dirname, 'src'), true);
+require('../').addPath(path.join(__dirname, 'src'));
 
 // other common test setup, e.g.
 

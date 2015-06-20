@@ -3,7 +3,7 @@
     "description": "Simple module to add additional directories to the Node module search for top-level app modules",
     "main": "lib/index.js",
     "scripts": {
-        "test": "node test/test.js"
+        "test": "node test/test.js && ./node_modules/mocha/bin/mocha test/test2.js"
     },
     "repository": {
         "type": "git",

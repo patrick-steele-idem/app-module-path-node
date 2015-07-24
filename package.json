@@ -26,8 +26,8 @@
         "registry": "https://registry.npmjs.org/"
     },
     "ebay": {},
-    "version": "1.0.2",
     "devDependencies": {
         "mocha": "^2.2.5"
-    }
+    },
+    "version": "1.0.3"
 }

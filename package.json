@@ -3,7 +3,7 @@
     "description": "Simple module to add additional directories to the Node module search for top-level app modules",
     "main": "lib/index.js",
     "scripts": {
-        "test": "node test/test.js"
+        "test": "node test/test.js && ./node_modules/mocha/bin/mocha test/test2.js"
     },
     "repository": {
         "type": "git",
@@ -26,5 +26,8 @@
         "registry": "https://registry.npmjs.org/"
     },
     "ebay": {},
-    "version": "1.0.2"
+    "version": "1.0.2",
+    "devDependencies": {
+        "mocha": "^2.2.5"
+    }
 }

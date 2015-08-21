@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/app-module-path.png?downloads=true)](https://nodei.co/npm/app-module-path/)
+
 app-module-path
 =====================
 
@@ -30,7 +32,7 @@ Given the following example directory structure:
 - **my-app/**
     - **src/** - Source code and application modules directory
         - **foo/** - A module directory
-            - index.js 
+            - index.js
         - **bar/** - Another module directory
             - index.js
     - **node_modules/** - Installed modules

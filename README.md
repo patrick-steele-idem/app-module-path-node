@@ -56,6 +56,23 @@ var foo = require('src/foo'); // Fails
 var bar = require('src/bar'); // Fails
 ```
 
+## Require Hook
+If you prefer (it's especially nice for ES6), you can use the require hook:
+
+```javascript
+require('app-module-path/register');
+
+// Or ES6:
+import "app-module-path/register";
+
+// Is equivilant to:
+require('app-module-path').addPath(__dirname);
+
+// Or ES6:
+import { addPath } from 'app-module-path';
+addPath(__dirname);
+```
+
 ## Additional Notes
 
 * __Search path order:__

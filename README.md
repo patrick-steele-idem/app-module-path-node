@@ -56,19 +56,26 @@ var foo = require('src/foo'); // Fails
 var bar = require('src/bar'); // Fails
 ```
 
-## Require Hook
-If you prefer (it's especially nice for ES6), you can use the require hook:
+## Alternate Usage
+
+This module supports an alternate method of adding a path to the Node.js module search path that requires less code. Requiring or importing the `app-module-path/register` module will result in the directory of the calling module being added to the Node.js module search path as shown below:
+
+
+### ES5
 
 ```javascript
 require('app-module-path/register');
 
-// Or ES6:
+// Is equivalent to:
+require('app-module-path').addPath(__dirname);
+```
+
+### ES6
+
+```javascript
 import "app-module-path/register";
 
-// Is equivilant to:
-require('app-module-path').addPath(__dirname);
-
-// Or ES6:
+// Is equivalent to:
 import { addPath } from 'app-module-path';
 addPath(__dirname);
 ```

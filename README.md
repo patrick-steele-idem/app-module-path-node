@@ -51,7 +51,7 @@ var baz = require('installed-baz'); // Works
 Lastly, by design, installed modules (i.e. modules under the `node_modules` directory) will not be able to require application-level modules so the following will ___not___ work:
 
 ```javascript
-// All of the following lines will work *not* work in "node_modules/installed-baz/index.js"!
+// All of the following lines will *not* work in "node_modules/installed-baz/index.js"!
 var foo = require('src/foo'); // Fails
 var bar = require('src/bar'); // Fails
 ```

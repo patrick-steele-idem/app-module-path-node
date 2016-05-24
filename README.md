@@ -80,6 +80,27 @@ import { addPath } from 'app-module-path';
 addPath(__dirname);
 ```
 
+Additionally, requiring or importing `app-module-path/cwd` will result in the current working directory of the Node.js process being added to the module search path as shown below:
+
+### ES5
+
+```javascript
+require('app-module-path/cwd');
+
+// Is equivalent to:
+require('app-module-path').addPath(process.cwd());
+```
+
+### ES6
+
+```javascript
+import "app-module-path/cwd";
+
+// Is equivalent to:
+import { addPath } from 'app-module-path';
+addPath(process.cwd());
+```
+
 ## Additional Notes
 
 * __Search path order:__

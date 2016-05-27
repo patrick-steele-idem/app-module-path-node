@@ -56,7 +56,7 @@ var foo = require('src/foo'); // Fails
 var bar = require('src/bar'); // Fails
 ```
 
-## Alternate Usage
+## Alternate Usage (`app-module-path/register`)
 
 This module supports an alternate method of adding a path to the Node.js module search path that requires less code. Requiring or importing the `app-module-path/register` module will result in the directory of the calling module being added to the Node.js module search path as shown below:
 
@@ -79,6 +79,8 @@ import "app-module-path/register";
 import { addPath } from 'app-module-path';
 addPath(__dirname);
 ```
+
+## Alternative Usage (`app-module-path/cwd`)
 
 Additionally, requiring or importing `app-module-path/cwd` will result in the current working directory of the Node.js process being added to the module search path as shown below:
 

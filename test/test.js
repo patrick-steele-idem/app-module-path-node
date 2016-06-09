@@ -4,4 +4,6 @@ require('../').addPath(path.join(__dirname, 'src'));
 require('module-a').sayHello();
 require('module-b').sayHello();
 
+require('package.json');
+
 console.log('All tests passed!');

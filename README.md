@@ -106,7 +106,9 @@ addPath(process.cwd());
 ## Additional Notes
 
 * __Search path order:__
-    * App module paths will be added to the beginning of the default module search path. That is, if a module with the same name exists in both a `node_modules` directory and an application module directory then the module in the appliation module directory will be loaded since it is found first.
+    * App module paths will be added to the end of the default module search path. That is, if a module with the same name exists in both a `node_modules` directory and an application module directory then the module in the `node_modules` directory will be loaded since it is found first.
+    *This behavior is new in v2.x. In v1.x, this search order was reversed*
+
 * __Node.js compatibility:__
     * This module depends on overriding/wrapping a built-in Node.js method, and it is possible (but unlikely) that this behavior could be broken in a future release of Node.js (at which point a workaround would need to be used)
     * This module will _not_ change or break modules installed into the `node_modules` directory.

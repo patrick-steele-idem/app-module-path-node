@@ -5,6 +5,12 @@ app-module-path
 
 This simple module enables you to add additional directories to the Node.js module search path (for top-level app modules only). This allows application-level modules to be required as if they were installed into the `node_modules` directory.
 
+## How it works
+
+This module works by monkey-patching the internal require('module').Module._nodeModulePaths method to prepend additional directories: https://github.com/patrick-steele-idem/app-module-path-node/blob/97fc60947bcca6e194f549d0d374ef34a5eb49df/lib/index.js#L7-L17
+
+You may want to consider using the more recent require-self-ref module as an alternative. Both app-module-path and require-self-ref work, but I find require-self-ref to be cleaner. require-self-ref monkey patches the internal require('module').Module. _resolveFilename method.
+
 ## Installation
 
 `npm install app-module-path --save`

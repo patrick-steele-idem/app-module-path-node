@@ -60,6 +60,15 @@ var bar = require('src/bar'); // Fails
 
 This module supports an alternate method of adding a path to the Node.js module search path that requires less code. Requiring or importing the `app-module-path/register` module will result in the directory of the calling module being added to the Node.js module search path as shown below:
 
+## Explicitly enabling a directory/package
+
+By default, `app-module-path` will not attempt to resolve app modules from a directory that is found to be within a `node_modules` directory. This behavior can be changed by explicitly enabling `app-module-path` to work for descendent modules of a specific directory. For example:
+
+```javascript
+var packageDir = path.dirname(require.resolve('installed-module-allowed'));
+require('../').enableForDir(packageDir);
+```
+
 
 ### ES5
 
